@@ -2,18 +2,18 @@ import pandas as pd
 
 
 def calculate_demographic_data(print_data=True):
-    # Read data from file
+    # data from file
     df = pd.read_csv("adult.data.csv", names=[
         "age","workclass","fnlwgt","education","education-num",
         "marital-status","occupation","relationship","race","sex",
         "capital-gain","capital-loss","hours-per-week","native-country","salary"
     ], skipinitialspace=True)
 
-    # Fix data types (IMPORTANT)
+    # Fix data typ
     df["age"] = pd.to_numeric(df["age"])
     df["hours-per-week"] = pd.to_numeric(df["hours-per-week"])
 
-    # 1. Number of each race
+    # 1. Number of
     race_count = df["race"].value_counts()
 
     # 2. Average age of men
@@ -34,7 +34,7 @@ def calculate_demographic_data(print_data=True):
         (df[lower_education]["salary"] == ">50K").mean() * 100, 1
     )
 
-    # 6. Minimum hours worked per week
+    # 6. Min hours worked per week
     min_work_hours = df["hours-per-week"].min()
 
     # 7. Percentage of rich among those who work fewest hours
@@ -57,7 +57,7 @@ def calculate_demographic_data(print_data=True):
     ]
     top_IN_occupation = india_rich["occupation"].value_counts().idxmax()
 
-    # Print results
+    # results
     if print_data:
         print("Number of each race:\n", race_count)
         print("Average age of men:", average_age_men)
